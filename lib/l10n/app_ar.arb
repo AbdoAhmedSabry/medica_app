@@ -1,0 +1,34 @@
+{
+  "@@locale": "ar",
+  
+  "welcome": "مرحباً",
+  "signIn": "تسجيل الدخول",
+  "signInSubtitle": "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة.",
+  "emailLabel": "البريد الإلكتروني",
+  "emailHint": "أدخل بريدك الإلكتروني",
+  "passwordLabel": "كلمة المرور",
+  "passwordHint": "أدخل كلمة المرور",
+  "forgetPassword": "نسيت كلمة المرور؟",
+  "or": "أو",
+  "dontHaveAccount": "ليس لديك حساب؟",
+  "signUp": "إنشاء حساب",
+  
+  "createNewAccount": "إنشاء حساب جديد",
+  "fullNameLabel": "الاسم الكامل",
+  "fullNameHint": "أدخل اسمك بالكامل",
+  "mobileNumberLabel": "رقم الهاتف",
+  "mobileNumberHint": "أدخل رقم هاتفك",
+  "alreadyHaveAccount": "لديك حساب بالفعل؟",
+  
+  "hiWelcomeBack": "مرحباً بعودتك،",
+  "searchDoctorHint": "ابحث عن طبيب...",
+  "medicalCenter": "المركز الطبي",
+  "medicalCenterDesc": "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة.",
+  "categories": "التخصصات",
+  "seeAll": "عرض الكل",
+  "dentist": "أسنان",
+  "therapist": "علاج طبيعي",
+  "surgeon": "جراحة",
+  "allDoctors": "جميع الأطباء",
+  "bookNow": "احجز"
+}

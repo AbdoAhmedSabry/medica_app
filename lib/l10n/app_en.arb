@@ -1,0 +1,34 @@
+{
+  "@@locale": "en",
+  
+  "welcome": "Welcome",
+  "signIn": "Sign In",
+  "signInSubtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  "emailLabel": "Email",
+  "emailHint": "Enter Your Email",
+  "passwordLabel": "Password",
+  "passwordHint": "Enter Your Password",
+  "forgetPassword": "Forget Password",
+  "or": "OR",
+  "dontHaveAccount": "Don't have an account?",
+  "signUp": "Sign Up",
+  
+  "createNewAccount": "Create New Account",
+  "fullNameLabel": "Full Name",
+  "fullNameHint": "Enter Your Full Name",
+  "mobileNumberLabel": "Mobile Number",
+  "mobileNumberHint": "Enter Your Phone Number",
+  "alreadyHaveAccount": "Already have an account?",
+  
+  "hiWelcomeBack": "Hi, Welcome Back,",
+  "searchDoctorHint": "Search a Doctor",
+  "medicalCenter": "Medical Center",
+  "medicalCenterDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  "categories": "Categories",
+  "seeAll": "See All",
+  "dentist": "Dentist",
+  "therapist": "Therapist",
+  "surgeon": "Surgeon",
+  "allDoctors": "All Doctors",
+  "bookNow": "Book"
+}

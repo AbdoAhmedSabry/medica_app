@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:medica/config/backendpoint.dart';
+import 'package:medica/config/cachehelper.dart';
 import 'package:medica/config/erorr/failure.dart';
 import 'package:medica/config/services/databaseservice.dart';
 import 'package:medica/features/auth/data/data_sources/remote_data_source.dart';
@@ -29,19 +31,27 @@ class AuthRepositoryImpl implements AuthRepository {
         password: password,
       );
       final userexist = await databaseservice.getData(
-        collectionPath: 'patients',
+        collectionPath: BackEndpoint.patientCollection,
         docId: user.uid,
       );
       if (userexist == null) {
         final userModel = UserModel.fromUserEntity(user);
         await databaseservice.setData(
-          collectionPath: 'patients',
+          collectionPath: BackEndpoint.patientCollection,
           docId: user.uid,
           data: userModel.toJson(),
+        );
+        await CacheHelper.saveData(
+          key: CacheEndpoint.patientProfile,
+          value: userModel.toJson(),
         );
         return right(userModel);
       } else {
         final userModel = UserModel.fromJson(userexist);
+        await CacheHelper.saveData(
+          key: CacheEndpoint.patientProfile,
+          value: userModel.toJson(),
+        );
         return right(userModel);
       }
     } on FirebaseAuthException catch (e) {
@@ -69,9 +79,13 @@ class AuthRepositoryImpl implements AuthRepository {
       );
       final userModel = UserModel.fromUserEntity(user);
       await databaseservice.setData(
-        collectionPath: 'patients',
+        collectionPath: BackEndpoint.patientCollection,
         docId: user.uid,
         data: userModel.toJson(),
+      );
+      await CacheHelper.saveData(
+        key: CacheEndpoint.patientProfile,
+        value: userModel.toJson(),
       );
       return right(userModel);
     } on FirebaseAuthException catch (e) {
@@ -116,19 +130,27 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       final user = await firebaseAuthServic.signInWithGoogle();
       final userexist = await databaseservice.getData(
-        collectionPath: 'patients',
+        collectionPath: BackEndpoint.patientCollection,
         docId: user.uid,
       );
       if (userexist == null) {
         final userModel = UserModel.fromUserEntity(user);
         await databaseservice.setData(
-          collectionPath: 'patients',
+          collectionPath: BackEndpoint.patientCollection,
           docId: user.uid,
           data: userModel.toJson(),
+        );
+        await CacheHelper.saveData(
+          key: CacheEndpoint.patientProfile,
+          value: userModel.toJson(),
         );
         return right(userModel);
       } else {
         final userModel = UserModel.fromJson(userexist);
+        await CacheHelper.saveData(
+          key: CacheEndpoint.patientProfile,
+          value: userModel.toJson(),
+        );
         return right(userModel);
       }
     } on FirebaseAuthException catch (e) {
@@ -145,19 +167,27 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       final user = await firebaseAuthServic.signInWithFacebook();
       final userexist = await databaseservice.getData(
-        collectionPath: 'patients',
+        collectionPath: BackEndpoint.patientCollection,
         docId: user.uid,
       );
       if (userexist == null) {
         final userModel = UserModel.fromUserEntity(user);
         await databaseservice.setData(
-          collectionPath: 'patients',
+          collectionPath: BackEndpoint.patientCollection,
           docId: user.uid,
           data: userModel.toJson(),
+        );
+        await CacheHelper.saveData(
+          key: CacheEndpoint.patientProfile,
+          value: userModel.toJson(),
         );
         return right(userModel);
       } else {
         final userModel = UserModel.fromJson(userexist);
+        await CacheHelper.saveData(
+          key: CacheEndpoint.patientProfile,
+          value: userModel.toJson(),
+        );
         return right(userModel);
       }
     } on FirebaseAuthException catch (e) {

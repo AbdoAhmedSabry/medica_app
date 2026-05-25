@@ -3,8 +3,25 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medica/config/theme/app_colors.dart';
 import 'package:medica/config/theme/app_text_styles.dart';
 
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+// تأكد من استيراد مسارات ملفات التصميم الخاصة بك
+// import 'package:medica/config/theme/app_colors.dart';
+// import 'package:medica/config/theme/app_text_styles.dart';
+
 class CustomSocialButton extends StatelessWidget {
-  const CustomSocialButton({super.key});
+  final VoidCallback facebooktap;
+  final VoidCallback googletap;
+  final bool isFacebookLoading;
+  final bool isGoogleLoading;
+
+  const CustomSocialButton({
+    super.key,
+    required this.facebooktap,
+    required this.googletap,
+    this.isFacebookLoading = false, // قيم افتراضية false لتجنب المشاكل
+    this.isGoogleLoading = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,22 +39,57 @@ class CustomSocialButton extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            CircleAvatar(
-              radius: 20,
-              backgroundColor: AppColors.subtract,
+            GestureDetector(
+              onTap: isGoogleLoading || isFacebookLoading ? null : googletap,
               child: CircleAvatar(
-                radius: 19,
-                backgroundColor: Colors.white,
-                child: Icon(Icons.facebook, color: AppColors.primary),
+                radius: 27.r,
+                backgroundColor: AppColors.subtract,
+                child: CircleAvatar(
+                  radius: 26.r,
+                  backgroundColor: Colors.white,
+                  child: isGoogleLoading
+                      ? SizedBox(
+                          width: 20.w,
+                          height: 20.h,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            color: AppColors.primary,
+                          ),
+                        )
+                      : Image.asset(
+                          'assets/images/google_logo.png',
+                          width: 24.w,
+                          errorBuilder: (context, error, stackTrace) =>
+                              const Icon(Icons.g_mobiledata, size: 30),
+                        ),
+                ),
               ),
             ),
-            CircleAvatar(
-              radius: 27,
-              backgroundColor: AppColors.subtract,
+
+            // زرار فيسبوك
+            GestureDetector(
+              onTap: isFacebookLoading || isGoogleLoading ? null : facebooktap,
               child: CircleAvatar(
-                radius: 26,
-                backgroundColor: Colors.white,
-                child: Icon(Icons.facebook, color: AppColors.primary),
+                radius: 27.r,
+                backgroundColor: AppColors.subtract,
+                child: CircleAvatar(
+                  radius: 26.r,
+                  backgroundColor: Colors.white,
+                  child: isFacebookLoading
+                      ? SizedBox(
+                          width: 20.w,
+                          height: 20.h,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            color: AppColors.primary,
+                          ),
+                        )
+                      : Icon(
+                          Icons.facebook,
+                          color: AppColors.primary,
+                          size: 28.sp,
+                        ),
+                ),
               ),
             ),
           ],

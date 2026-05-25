@@ -7,9 +7,11 @@ class AuthStateAccount extends StatelessWidget {
     super.key,
     required this.firstText,
     required this.secondText,
+    required this.ontap,
   });
   final String firstText;
   final String secondText;
+  final VoidCallback ontap;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -21,10 +23,13 @@ class AuthStateAccount extends StatelessWidget {
             color: AppColors.subtract,
           ),
         ),
-        Text(
-          secondText,
-          style: AppTextStyles.font16SemiBold.copyWith(
-            color: AppColors.primary,
+        TextButton(
+          onPressed: ontap,
+          child: Text(
+            secondText,
+            style: AppTextStyles.font16SemiBold.copyWith(
+              color: AppColors.primary,
+            ),
           ),
         ),
       ],
